@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5e对战平台 · 轻导航</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #faf8f5;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+      color: #2c2b28;
+      line-height: 1.7;
+      padding: 0 1.2rem;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 2.2rem auto;
+    }
+
+    /* 顶栏 – 温和导航 */
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0 1.2rem;
+      border-bottom: 1px solid #e5e1da;
+      margin-bottom: 2.8rem;
+    }
+
+    .site-mark {
+      font-weight: 460;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      color: #3f3c37;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5b5750;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a:hover {
+      color: #1f1d19;
+      border-bottom-color: #b3a99b;
+    }
+
+    /* hero 区域 – 从再次访问说开 */
+    .hero-note {
+      background: #f6f3ee;
+      padding: 2.4rem 2rem;
+      border-radius: 24px;
+      margin-bottom: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+
+    .hero-note h1 {
+      font-size: 1.8rem;
+      font-weight: 440;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      color: #2b2823;
+    }
+
+    .hero-note p {
+      font-size: 1rem;
+      color: #4a4640;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-note .reminder {
+      background: #fffcf7;
+      padding: 1rem 1.4rem;
+      border-left: 4px solid #bfb4a4;
+      border-radius: 12px;
+      margin: 1.4rem 0 0.2rem;
+      font-size: 0.95rem;
+      color: #3d3932;
+    }
+
+    .hero-note .reminder strong {
+      font-weight: 500;
+      color: #2b2823;
+    }
+
+    /* 核心介绍 – 收藏 · 持续关注 */
+    .core-section {
+      margin: 2.6rem 0 2.8rem;
+    }
+
+    .core-section h2 {
+      font-weight: 420;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.2rem;
+      border-left: 3px solid #bfb4a4;
+      padding-left: 1rem;
+      color: #2b2823;
+    }
+
+    .core-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem 1.6rem;
+    }
+
+    .core-item {
+      flex: 1 1 200px;
+      background: #fcfaf7;
+      padding: 1.4rem 1.2rem 1.6rem;
+      border-radius: 20px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.02);
+    }
+
+    .core-item h3 {
+      font-weight: 460;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #3b3731;
+    }
+
+    .core-item p {
+      font-size: 0.95rem;
+      color: #56524b;
+    }
+
+    /* 三个场景模块 */
+    .scene-section {
+      margin: 3.4rem 0 3rem;
+    }
+
+    .scene-section h2 {
+      font-weight: 420;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.6rem;
+      border-left: 3px solid #bfb4a4;
+      padding-left: 1rem;
+      color: #2b2823;
+    }
+
+    .scene-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .scene-card {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 1.2rem 1.6rem;
+      background: #fcfaf7;
+      padding: 1.4rem 1.6rem;
+      border-radius: 20px;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .scene-card .num {
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: #bfb4a4;
+      min-width: 2rem;
+      line-height: 1;
+    }
+
+    .scene-card .text-wrap {
+      flex: 1;
+    }
+
+    .scene-card .text-wrap h3 {
+      font-weight: 460;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #3b3731;
+    }
+
+    .scene-card .text-wrap p {
+      font-size: 0.95rem;
+      color: #56524b;
+    }
+
+    /* 常见说明 – 类似 FAQ 摘要 */
+    .faq-section {
+      margin: 3rem 0 3.2rem;
+      background: #f6f3ee;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.2rem;
+    }
+
+    .faq-section h2 {
+      font-weight: 420;
+      font-size: 1.3rem;
+      margin-bottom: 1.4rem;
+      color: #2b2823;
+      border-left: 3px solid #bfb4a4;
+      padding-left: 1rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .faq-item .q {
+      font-weight: 460;
+      color: #3b3731;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.95rem;
+      color: #56524b;
+      padding-left: 0.6rem;
+      border-left: 2px solid #d9d2c9;
+      padding-left: 1rem;
+      margin-top: 0.15rem;
+    }
+
+    .faq-item .a a {
+      color: #4f4a42;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c4bbaf;
+    }
+
+    .faq-item .a a:hover {
+      color: #25221e;
+      text-decoration-color: #7d7367;
+    }
+
+    /* 底部 – 简单收束 */
+    .footer-note {
+      text-align: center;
+      padding: 1.6rem 0 2.4rem;
+      border-top: 1px solid #e5e1da;
+      font-size: 0.85rem;
+      color: #7d766d;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-note a {
+      color: #5b554d;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+
+    .footer-note a:hover {
+      color: #1f1d19;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body {
+        padding: 0 0.8rem;
+      }
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+      }
+      .hero-note {
+        padding: 1.6rem 1.2rem;
+      }
+      .hero-note h1 {
+        font-size: 1.4rem;
+      }
+      .core-grid {
+        flex-direction: column;
+      }
+      .scene-card {
+        padding: 1rem 1.2rem;
+      }
+      .faq-section {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 导航栏 -->
+  <header class="top-bar">
+    <span class="site-mark">5e·见</span>
+    <nav class="nav-links">
+      <a href="#intro">缘由</a>
+      <a href="#scene">场景</a>
+      <a href="#faq">常问</a>
+    </nav>
+  </header>
+
+  <!-- hero / 再次访问 & 收藏 -->
+  <div class="hero-note" id="intro">
+    <h1>再次打开，是因为熟悉与期待</h1>
+    <p>也许你曾在这里停留，也许只是路过。无论因为什么，再次访问一个对战平台，往往是因为它带来过可靠的体验，或是你想看看它如今的模样。</p>
+    <p><a href="https://index-5e.com" style="color:#3f3c37; text-decoration:underline; text-underline-offset:2px;">5e对战平台</a> 就是这样一个地方 —— 它不喧哗，不张扬，但许多玩家习惯把它放在收藏夹里，偶尔回来看看。持续关注，有时候就是一种安静的陪伴。</p>
+    <div class="reminder">
+      <strong>💡 收藏小提示</strong> · 如果你觉得这里值得常来，不妨把页面加入浏览器收藏夹。下次想回来时，不必费力寻找，它就在那里。
+    </div>
+  </div>
+
+  <!-- 核心介绍：从收藏与持续关注展开 -->
+  <section class="core-section">
+    <h2>收藏 · 关注 · 日常</h2>
+    <div class="core-grid">
+      <div class="core-item">
+        <h3>收藏的惯性</h3>
+        <p>我们总会收藏一些网站，因为相信以后还会用到。收藏 <a href="https://index-5e.com" style="color:#4f4a42; text-decoration:underline; text-underline-offset:2px;">5e对战平台</a> 不需要理由，只要你觉得它值得留在你的书签栏里。</p>
+      </div>
+      <div class="core-item">
+        <h3>持续的微光</h3>
+        <p>不需要每天都来，但每隔一段时间，回来看看版本变化、社区动态，也是一种轻松的参与感。持续关注，不一定时刻在线。</p>
+      </div>
+      <div class="core-item">
+        <h3>轻量的连接</h3>
+        <p>一个对战平台最好的状态，是让人感到自在：想玩的时候打开，不想玩的时候也不会有负担。让连接保持轻量，才会更长久。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <section class="scene-section" id="scene">
+    <h2>三个可以遇到它的场景</h2>
+    <div class="scene-cards">
+      <div class="scene-card">
+        <span class="num">01</span>
+        <div class="text-wrap">
+          <h3>周末的傍晚，想起打一把</h3>
+          <p>忙碌了一周，忽然想找一局平衡的对战。不需要太多社交，打开熟悉的平台，匹配、开始、结束。简单而完整。</p>
+        </div>
+      </div>
+      <div class="scene-card">
+        <span class="num">02</span>
+        <div class="text-wrap">
+          <h3>和朋友聊天时提到</h3>
+          <p>偶尔在群里聊起最近在玩什么，有人说“还在那个平台”。于是你想起 <a href="https://index-5e.com" style="color:#4f4a42; text-decoration:underline; text-underline-offset:2px;">5e对战平台</a>，可能还会顺手发给朋友看看。</p>
+        </div>
+      </div>
+      <div class="scene-card">
+        <span class="num">03</span>
+        <div class="text-wrap">
+          <h3>清理收藏夹时的犹豫</h3>
+          <p>整理书签时看到它，想了想，还是留了下来。不是因为一定要用，而是觉得以后可能还会想回来。收藏的意义有时就是这种“可能”。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见说明 / 摘要 -->
+  <section class="faq-section" id="faq">
+    <h2>一些你可能想问的 · 简短说明</h2>
+    <div class="faq-item">
+      <div class="q">▸ 需要注册才能使用吗？</div>
+      <div class="a">大部分功能需要注册账号，注册流程很轻，用常用邮箱即可。具体可以浏览 <a href="https://index-5e.com">5e对战平台</a> 页面了解。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">▸ 平台更新频繁吗？</div>
+      <div class="a">会持续迭代，但不会频繁到让人困扰。如果感兴趣，可以偶尔回来看看动态，或者关注官方渠道。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">▸ 我收藏了，但很久没来，会有变化吗？</div>
+      <div class="a">收藏夹里的地址不会变，页面内容会随着版本调整。过段时间再来，既熟悉又可能有一点新东西。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">▸ 有移动版或客户端吗？</div>
+      <div class="a">目前以网页端为主，移动浏览器也可以访问。具体适配建议直接访问 <a href="https://index-5e.com">5e对战平台</a> 查看。</div>
+    </div>
+  </section>
+
+  <!-- 底部 -->
+  <footer class="footer-note">
+    <span>偶尔回来 · 持续关注 · 自在就好</span><br>
+    <span style="display:inline-block; margin-top:0.6rem;">主站：<a href="https://index-5e.com">5e对战平台</a></span>
+  </footer>
+
+</div>
+</body>
+</html>
