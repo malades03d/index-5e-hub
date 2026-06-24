@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>开云 · 信息与实践平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', '宋体', Songti SC, serif;
+      background-color: #f5f2ec;
+      color: #2c2b28;
+      line-height: 1.7;
+    }
+
+    /* 深色头图 —— 杂志式跨页封面感 */
+    .hero {
+      background: linear-gradient(145deg, #1a1c1e 0%, #262a2e 80%);
+      color: #e8e1d4;
+      padding: 3.5rem 2rem 4rem 2rem;
+      text-align: center;
+      position: relative;
+      border-bottom: 1px solid #3e3a33;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: repeating-linear-gradient(90deg, #c9a04e, #c9a04e 20px, transparent 20px, transparent 40px);
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      letter-spacing: 6px;
+      font-weight: 400;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: #f0e8d8;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #bfae8f;
+      letter-spacing: 2px;
+      border-top: 1px solid #5b5346;
+      display: inline-block;
+      padding-top: 1.2rem;
+      margin-top: 0.8rem;
+      font-style: italic;
+    }
+
+    .hero .meta-tag {
+      margin-top: 1.8rem;
+      font-size: 0.85rem;
+      color: #8f846f;
+      letter-spacing: 1px;
+    }
+
+    /* 浅色正文区 + 卡片感 */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.8rem 1.5rem 3rem 1.5rem;
+    }
+
+    .intro-card {
+      background: #fcfaf7;
+      padding: 2.2rem 2.5rem;
+      margin-bottom: 2.2rem;
+      border-radius: 2px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+      border-left: 4px solid #c9a04e;
+    }
+
+    .intro-card h2 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: #343026;
+      border-bottom: 1px dashed #ddd6c8;
+      padding-bottom: 0.5rem;
+    }
+
+    .intro-card p {
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 强调色用于链接 */
+    a {
+      color: #a57c3a;
+      text-decoration: none;
+      border-bottom: 1px solid #dac29a;
+      transition: color 0.2s, border-color 0.2s;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: #7b5f2c;
+      border-bottom-color: #7b5f2c;
+    }
+
+    /* 特点/场景 网格 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+
+    .feature-item {
+      background: #f9f6f0;
+      padding: 1.6rem 1.3rem;
+      border-radius: 1px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-item:hover {
+      background: #f3ede4;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-item h3 {
+      font-weight: 400;
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+      color: #3b352c;
+      letter-spacing: 1px;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #4d473e;
+    }
+
+    /* FAQ 摘要 */
+    .faq-section {
+      background: #ede8df;
+      padding: 2rem 2.2rem;
+      margin-top: 2.5rem;
+      border-radius: 2px;
+      border-top: 2px solid #c9a04e;
+    }
+
+    .faq-section h3 {
+      font-weight: 400;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #2e2922;
+    }
+
+    .faq-item {
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 500;
+      color: #4d4030;
+      margin-bottom: 0.3rem;
+      font-size: 0.98rem;
+    }
+
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #4c453b;
+      margin-left: 0.5rem;
+    }
+
+    /* 页尾提示 */
+    .footer-note {
+      margin-top: 3.5rem;
+      padding: 2rem 1rem 2.5rem 1rem;
+      text-align: center;
+      border-top: 1px solid #d9d0c2;
+      font-size: 0.92rem;
+      color: #5b5346;
+    }
+
+    .footer-note span {
+      display: inline-block;
+      background: #dacbb8;
+      color: #1f1d1a;
+      padding: 0.2rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      margin: 0 0.3rem;
+    }
+
+    .footer-note a {
+      border-bottom: none;
+      background: #dacbb8;
+      padding: 0.1rem 0.8rem;
+      border-radius: 20px;
+      color: #1f1d1a;
+      font-weight: 400;
+    }
+
+    .footer-note a:hover {
+      background: #c9b69b;
+      color: #0f0e0c;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: 3px;
+      }
+
+      .hero {
+        padding: 2.2rem 1.2rem 3rem 1.2rem;
+      }
+
+      .intro-card {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .faq-section {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .container {
+        padding: 1.8rem 1rem 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+      }
+
+      .hero .sub {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 杂志式深色头图 -->
+  <header class="hero">
+    <h1>开云</h1>
+    <div class="sub">信息线索 · 实践路径 · 数字栖居</div>
+    <div class="meta-tag">—— 一个值得了解的站点 ——</div>
+  </header>
+
+  <!-- 正文区：背景说明 + 三段自然介绍 -->
+  <main class="container">
+    <!-- 第一段：站点背景与可信说明 -->
+    <div class="intro-card">
+      <h2>站点背景</h2>
+      <p>在信息过载的时代，能够持续提供可靠内容与合理路径的站点并不多见。<a href="https://portalmobile-ky.com">开云</a>最初的设计理念便围绕“可溯源的信息组织方式”展开，并非追逐流量或速食资讯。它更像一个经过筛选的通道，将使用者的注意力引向那些经过验证、具有实质内容的模块。站点由小型团队维护，更新节奏克制，更看重逻辑的连贯而非数量的堆叠。无论是技术性议题还是日常信息检索，这里都保持着一份近乎书卷气的审慎。</p>
+      <p>从域名结构到页面布局，<a href="https://portalmobile-ky.com">开云</a>并未采用常见的大平台架构，而是保留了独立站的简洁与直接。这种设置本身也是一种信号：它不试图收集冗余数据，也不依赖第三方追踪组件。对于关注隐私与信息自主的使用者而言，这种透明度本身就是可信度的基石。</p>
+    </div>
+
+    <!-- 第二段：特点与使用场景（变化为功能分类卡片） -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>内容聚合 · 筛选</h3>
+        <p>不是简单的链接列表，而是基于主题关联与实用价值筛选后的资源集合。每个条目都经过人工评估，避免无效或低质信息混入。</p>
+      </div>
+      <div class="feature-item">
+        <h3>结构克制 · 可读</h3>
+        <p>页面层级清晰，没有过度装饰的组件。无论是移动端还是桌面端，阅读体验都保持连贯，字体、间距与对比度经过反复调整。</p>
+      </div>
+      <div class="feature-item">
+        <h3>更新可预期</h3>
+        <p>站点的内容增补遵循既定周期，而非突发式刷屏。这种节奏让关注者能够从容消化，也便于回溯之前发布的材料。</p>
+      </div>
+      <div class="feature-item">
+        <h3>无追踪干扰</h3>
+        <p>运行环境中未嵌入外部分析脚本或广告联盟代码，访问记录不会被第三方获取。对于注重数字主权的人而言，<a href="https://portalmobile-ky.com">开云</a>提供了一种更安静的浏览可能。</p>
+      </div>
+    </div>
+
+    <!-- 第三段：从问题出发的补充说明（自然承接） -->
+    <div class="intro-card">
+      <h2>它解决什么问题？</h2>
+      <p>日常搜索中，使用者常被大量重复、夸大甚至错误的信息包围。许多站点将商业变现置于内容之前，导致真正有价值的信息被层层包裹。<a href="https://portalmobile-ky.com">开云</a>试图在这一背景下提供一个不同的选项：它不承诺解决所有问题，但至少在你需要了解某个领域的基础脉络、查找经过梳理的参考资源时，能节省一些过滤噪音的精力。站内没有排行榜、弹窗或催促注册的按钮，每一项内容都基于“它是否对读者有用”这一朴素标准来放置。</p>
+      <p>当然，任何独立站点都有其局限。开云目前专注于中文语境下的实用信息组织，内容覆盖面并非无所不包，但所涉及的主题都力求提供可靠的起点。对于深度研究者而言，它更像一个索引的前奏，而非终点。</p>
+    </div>
+
+    <!-- FAQ 摘要（变化为两个常见问题，而非完整列表） -->
+    <div class="faq-section">
+      <h3>常见疑问 · 简答</h3>
+      <div class="faq-item">
+        <strong>“这个站点适合哪些人？”</strong>
+        <p>适合希望避开信息噪音、偏好干净阅读环境的使用者。无论是查找某个主题的入门资源，还是寻找经过筛选的工具推荐，都可以从<a href="https://portalmobile-ky.com">开云</a>的目录中获得启发。对数字隐私有基本关注的人也会欣赏其无追踪策略。</p>
+      </div>
+      <div class="faq-item">
+        <strong>“内容和普通博客有什么不同？”</strong>
+        <p>开云并非个人博客或新闻网站。它的内容形态更接近“精心维护的参考页”——信息经过交叉验证，出处清晰，不依赖时效性博取关注。站内不会出现耸动标题或情绪化表达，行文力求平实，侧重事实与逻辑关联。</p>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <p>如果你对更整全、可信的信息组织方式感兴趣，不妨将 <a href="https://portalmobile-ky.com">开云</a> 加入你的浏览索引。<br>
+      站点保持独立运营，不设付费墙，也无需注册。欢迎在合适的时候探访。<span>▎移动端体验更佳</span></p>
+      <p style="margin-top: 1.2rem; font-size: 0.75rem; color: #7c7262;">本页仅为介绍，内容基于站点公开信息与使用体验整理。</p>
+    </div>
+  </main>
+
+</body>
+</html>
