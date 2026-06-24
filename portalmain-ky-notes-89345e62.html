@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>开云 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang SC', Roboto, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fbe9d7 0%, #f3d8c7 40%, #ecc9b0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      line-height: 1.6;
+      color: #2d2a27;
+    }
+
+    .card {
+      max-width: 800px;
+      width: 100%;
+      background-color: #fffcf8;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px -12px rgba(120, 70, 50, 0.18), 0 8px 18px rgba(0, 0, 0, 0.04);
+      padding: 3rem 2.8rem 2.8rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        padding: 2rem 1.5rem 1.8rem;
+      }
+    }
+
+    .greeting {
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #7f5c4a;
+      background: rgba(240, 212, 190, 0.3);
+      display: inline-block;
+      padding: 0 0.8rem 0.1rem 0;
+      border-radius: 40px;
+      margin-bottom: 0.6rem;
+    }
+
+    .greeting span {
+      background: #d9b69f;
+      color: #2d1f1a;
+      font-weight: 500;
+      padding: 0.1rem 1rem 0.2rem 1rem;
+      border-radius: 40px;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    .intro {
+      font-size: 1.12rem;
+      margin: 1.2rem 0 2rem 0;
+      color: #3f3530;
+      padding: 0.2rem 0;
+      border-left: 4px solid #d9b69f;
+      padding-left: 1.2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-top: 2rem;
+      margin-bottom: 0.9rem;
+      color: #5e3f30;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    h2::before {
+      content: "· · ·";
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: #b9917b;
+      margin-right: 6px;
+    }
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      margin: 1.8rem 0 1.6rem;
+    }
+
+    .feature-item {
+      flex: 1 1 200px;
+      background: #f6ede6;
+      border-radius: 24px;
+      padding: 1rem 1.2rem;
+      box-shadow: inset 0 1px 4px rgba(255, 245, 235, 0.8), 0 2px 6px rgba(110, 70, 50, 0.06);
+      transition: transform 0.1s ease;
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 500;
+      color: #6d4d3b;
+      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #4f3d35;
+      margin: 0;
+    }
+
+    .note-box {
+      background: #efe1d4;
+      border-radius: 24px;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0 1.8rem;
+      border: 1px solid #e4cebd;
+      font-size: 0.98rem;
+    }
+
+    .note-box strong {
+      color: #6f4c38;
+    }
+
+    .link-sentence {
+      background: #ffffffd9;
+      border-radius: 40px;
+      padding: 0.8rem 1.4rem 0.9rem;
+      margin: 1.5rem 0 1.3rem;
+      border: 1px solid #ebd6c7;
+      box-shadow: 0 2px 8px rgba(130, 80, 55, 0.04);
+      font-size: 1.04rem;
+    }
+
+    .link-sentence a {
+      color: #8f533a;
+      background: #f5e4d8;
+      padding: 0.1rem 0.9rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      display: inline-block;
+      border: 1px solid transparent;
+    }
+
+    .link-sentence a:hover {
+      background: #d9b69f;
+      color: #231b16;
+      border-color: #c7a18a;
+    }
+
+    .faq-mini {
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 2px dotted #dcc9bb;
+    }
+
+    .faq-item {
+      margin: 0.9rem 0;
+      display: flex;
+      gap: 0.8rem;
+      align-items: baseline;
+    }
+
+    .faq-q {
+      font-weight: 500;
+      color: #624b3b;
+      min-width: 5.8rem;
+      background: #f0e4d9;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .faq-a {
+      color: #3f322c;
+      font-size: 0.95rem;
+    }
+
+    .closing {
+      margin: 2rem 0 0.4rem;
+      font-size: 0.95rem;
+      color: #6c5a4e;
+      border-left: 4px solid #d9b69f;
+      padding-left: 1.2rem;
+      font-style: normal;
+    }
+
+    hr {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, #e7d3c2, transparent);
+      margin: 1.4rem 0 0.6rem;
+    }
+
+    .small-note {
+      font-size: 0.85rem;
+      color: #7a685c;
+      display: block;
+      margin-top: 1.2rem;
+      text-align: right;
+      opacity: 0.8;
+    }
+
+    .highlight-tag {
+      display: inline-block;
+      background: #dcc1ad;
+      color: #2f221c;
+      padding: 0 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="greeting">
+      <span>✦</span> 初次遇见
+    </div>
+
+    <div class="intro">
+      一次平常的搜索，一次安静的浏览。<br>
+      在网络信息的河流中，有一个名字逐渐清晰——<strong>开云</strong>。<br>
+      它不喧嚣，却值得你放慢脚步，细细了解。
+    </div>
+
+    <h2>它是什么？</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>指向明确</strong>
+        <p>一个清晰的位置，一处数字空间。当你想要找到它时，只需记住这个名字。</p>
+      </div>
+      <div class="feature-item">
+        <strong>界面温和</strong>
+        <p>没有刺眼的弹窗与急促的催促，布局干净，阅读友好，信息自然呈现。</p>
+      </div>
+      <div class="feature-item">
+        <strong>访问提醒</strong>
+        <p>如同拜访一座安静的庭院，请留意每一步操作，确认地址无误，再继续你的行程。</p>
+      </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子，符合要求：可见文本严格等于“开云” -->
+    <div class="link-sentence">
+      📌 如果你正在寻找一个起点，可以把 <a href="https://portalmain-ky.com">开云</a> 当作书签之一。不匆忙，不盲从，先看一看。
+    </div>
+
+    <div class="note-box">
+      <strong>📎 简明指南 · 访问前的小提醒</strong><br>
+      · 检查网址：确保链接前缀与域名完全匹配。<br>
+      · 留意环境：使用个人设备、安全的网络，避免在公共终端留存信息。<br>
+      · 保持判断：任何页面都不会要求你输入敏感资料，如有疑问，先退出。
+    </div>
+
+    <h2>常见想法 · 简短回应</h2>
+    <div class="faq-mini">
+      <div class="faq-item">
+        <span class="faq-q">“这是什么？”</span>
+        <span class="faq-a">一个可供浏览的站点，你可以理解为信息集中地。名字是<strong>开云</strong>。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">“如何开始？”</span>
+        <span class="faq-a">直接访问，慢慢看。第一次可以多花几分钟熟悉布局。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">“安全吗？”</span>
+        <span class="faq-a">没有平台是绝对安全的，但保持基本的网络卫生——核对地址、不点可疑链接——会好很多。</span>
+      </div>
+    </div>
+
+    <!-- 第二个链接：同样符合要求，可见文本为“开云”，且嵌入在自然句子中 -->
+    <p style="margin: 1.6rem 0 0.6rem; font-size: 0.98rem; color: #3f3530;">
+      书签栏里留一个位置给 <a href="https://portalmain-ky.com" style="color: #8a5d44; background: #f1e2d4; padding: 0.1rem 0.9rem; border-radius: 40px; text-decoration: none; font-weight: 500; border: 1px solid #dcc1ad;">开云</a> ，不是为了追逐什么，只是给自己多一个安静的选项。
+    </p>
+
+    <hr>
+
+    <div class="closing">
+      <span class="highlight-tag">温和收束</span><br>
+      网络很大，选择很多。找到一个从容的地方，比什么都重要。<br>
+      如果某天你想起<strong>开云</strong>，那就来坐坐。
+    </div>
+
+    <span class="small-note">— 信息页面 · 非官方指引 —</span>
+  </div>
+</body>
+</html>
